@@ -1,0 +1,7 @@
+---
+- name: Pinging windows servers
+  hosts : Windows_servers
+  gather_facts: no
+  tasks: 
+   - name: ping windows servers right now!!
+     win_ping:
