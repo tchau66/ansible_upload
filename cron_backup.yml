@@ -1,0 +1,13 @@
+---
+- name: Create a simple cron job playbook
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: my first cron job
+    cron:
+      name: my_cron_job
+      state: absent
+#      minute: "*/5"
+#      job: /etc/ansible/cronscript.sh
+      user: ansible

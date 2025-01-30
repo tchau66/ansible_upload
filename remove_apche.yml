@@ -1,0 +1,16 @@
+---
+- name: Install Apache on CentOS 9
+  hosts: all
+  become: yes 
+
+  tasks:
+  - name: Update package cache
+    yum:
+      state: latest
+
+  - name: Install Apache
+    package:
+      name: httpd
+      state: absent
+  
+  

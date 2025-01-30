@@ -1,0 +1,11 @@
+---
+- name: Create a simple cron job playbook
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: remove cron job
+    cron:
+      name: my_cron_job
+      state: absent
+      user: ansible
