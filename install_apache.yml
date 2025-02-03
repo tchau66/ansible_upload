@@ -1,18 +1,23 @@
 ---
 - name: Install Apache on CentOS 9
   hosts: all
-  become: yes 
+  become: true 
 
   tasks:
-  - name: Update package cache
-    yum:
-      state: latest
 
-  - name: Install Apache
-    package:
-      name: httpd
-      state: present 
-  
+  - name: Update package cache
+    dnf:
+      update_cache: yes
+    when: ansible_distribution == "Centos"
+ 
+  - name: Install Apache and php package for Centos
+    dnf:
+      name:
+        - httpd
+        - php  
+      state: latest
+    when: ansible_distribution == "Centos"
+ 
   - name: Start and enable Apache service
     service:
       name: httpd
